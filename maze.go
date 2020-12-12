@@ -2,42 +2,6 @@ package maze
 
 import "fmt"
 
-type Direction int
-
-const (
-	North Direction = iota
-	South
-	East
-	West
-)
-
-type Room struct {
-	x int
-	y int
-
-	north *Room
-	south *Room
-	east  *Room
-	west  *Room
-}
-
-func (r *Room) ConnectTo(other *Room, direction Direction) {
-	switch direction {
-	case North:
-		r.north = other
-		other.south = r
-	case South:
-		r.south = other
-		other.north = r
-	case East:
-		r.east = other
-		other.west = r
-	case West:
-		r.west = other
-		other.east = r
-	}
-}
-
 type Maze struct {
 	width  int
 	length int
